@@ -1,0 +1,1 @@
+rm -rf /home/konkov96_2018/_scratch/spark/logs/*
