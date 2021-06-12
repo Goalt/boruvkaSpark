@@ -1,10 +1,14 @@
 scalaVersion := "2.11.12"
 
-sparkVersion := "2.4.0"
-sparkComponents ++= Seq("sql")
-sparkComponents ++= Seq("graphx")
+resolvers += "SparkPackages" at "https://dl.bintray.com/spark-packages/maven"
 
-spDependencies += "graphframes/graphframes:0.7.0-spark2.4-s_2.11"
+libraryDependencies ++= Seq(
+  "org.apache.spark" %% "spark-core" % "2.4.0",
+  "org.apache.spark" %% "spark-sql" % "2.4.0",
+  "org.apache.spark" %% "spark-graphx" % "2.4.0"
+)
+
+libraryDependencies += "org" % "graphframes" % "0.7.0-spark2.4-s_2.11" from "file:///app/lib/graphframes-0.7.0-spark2.4-s_2.11.jar"
 
 // set the main class for packaging the main jar
 mainClass in (Compile, packageBin) := Some("com.wrapper.BoruvkaAlgorithm")
